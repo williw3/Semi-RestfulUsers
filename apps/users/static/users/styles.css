@@ -1,0 +1,15 @@
+#user_data td, #user_data th{
+	border: 1px solid #ddd;
+	padding: 5px;
+}
+#user_data tr:nth-child(even){background-color: #f2f2f2;}
+
+#user_data tr:hover {background-color: #ddd;}
+
+#user_data th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #6c95d8;
+
+}

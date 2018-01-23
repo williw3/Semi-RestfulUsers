@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Rest Users Table</title>
+	{% load static %}
+	<link rel="stylesheet" href="{% static 'users/styles.css' %}" media="screen" title="no title"  charset="utf-8">
+
+</head>
+<body>
+	<h3>Users - index</h3>
+	<table id="user_data">
+		<tr>
+			<th>id</th>
+			<th>Full Name</th>
+			<th>Email</th>
+			<!-- <th>Created At</th> -->
+			<th>Actions</th>
+		</tr>
+	{% for user in users %}
+		<tr>
+			<td>{{ user.id }}</td>
+			<td>{{ user.first_name }} {{user.last_name}}</td>
+			<td>{{ user.email }}</td>
+			<td><a href="/{{user.id}}">Show</a> | <a href="/edit/{{user.id}}">Edit</a> | <a href="/destroy/{{user.id}}">Delete</a></td>
+			
+		</tr>
+	{% endfor %}
+	</table>
+
+
+
+	<a href="/new">Add new user</a>
+	
+
+</body>
+</html>
