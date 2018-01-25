@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect
+from django.contrib import messages
 
 from models import *
 
@@ -43,9 +44,18 @@ def destroy(request, id):
 
 def create(request):
 
-	#code to create a new resource
+	errors = User.objects.basic_validator(request.POST)
+	
+	if len(errors):
+		for tag, error in errors.iteritems():
+			messages.error(request, error, extra_tags=tag)
+		return redirect('/new')
+	# else:
+	# 	messages.success(request, 'Profile successfully created')
+
 	User.objects.create(first_name=request.POST['fname'], last_name=request.POST['lname'], email=request.POST['email'])
 	return redirect('/')
+
 
 
 
